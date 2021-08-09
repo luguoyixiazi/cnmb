@@ -6,68 +6,91 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>jisuan</title>
+    <style>
+
+    </style>
 </head>
 
 <body>
     <script>
+        var fist = ''
+        var namelist = ' '
         var name = ''
-        var i = 0
         function names(obj) { //js获取 
             name = obj.id
-            i += 1
-            if (i % 2 == 1) { obj.style.backgroundColor = 'red' }
-            else { obj.style.backgroundColor = 'white' }
+            namelist = obj.innerText
+            let save = document.getElementById('left')
+            var nodes = save.childNodes;
+            for (var i = 0; i < nodes.length; i++) {
+                if ((i % 2) != 0) {
+                    if ((i + 1) == (name * 2)) {
+                        nodes[i].style.backgroundColor = "red";
+                    } else { nodes[i].style.backgroundColor = "white" }
+
+                }
+            }
+
+
         }
+
         //计算
         function jisuan() {
             let n = document.getElementById('beishu')
-            n = n.value
-            if (name == 01) {
-                var x = 1.0944 * 100 / 32
-                var out = n * x
-                alert('苯醚甲环唑的' + n + '倍为' + out + 'x10^-5g/ml')
+            n = n.value//n为倍数值
+            console.log()
+            //打印函数
+            function print() {
+                var out = n * x * 0.1//out为所需的量
+                out = String(out)
+                alert(namelist + '的《' + n + '》倍，滴定为10ml所需的量为' + out + 'mg')
             }
-            else if (name == 02) {
-                var x = 4.4125
-                var out = n * x
-                alert('吡唑醚菌酯的' + n + '倍为' + out + 'x10^-5g/ml')
-            }
-            else if (name == 03) {
-                var x = 60 / 4
-                var out = n * x
-                alert('嘧菌酯的' + n + '倍为' + out + 'x10^-5g/ml')
-            }
-            else if (name == 04) {
-                var x = 9
-                var out = n * x
-                alert('粉唑醇的' + n + '倍为' + out + 'x10^-5g/ml')
-            }
-            else if (name == 05) {
-                var x = 54 / 16
-                var out = n * x
-                alert('胺菌酯的' + n + '倍为' + out + 'x10^-5g/ml')
-            }
-            else if (name == 06) {
-                var x = 12.5
-                var out = n * x
-                alert('啶酰菌胺的' + n + '倍为' + out + 'x10^-5g/ml')
-            }
-            else if (name == 07) {
-                var x = 3.125
-                var out = n * x
-                alert('戊唑醇的' + n + '倍为' + out + 'x10^-5g/ml')
-            }
+            if (parseFloat(n).toString() == "NaN") { alert('请输入数字') }
+            else {
+                if (name == 01) {
+                    var x = 1.0944 * 100 / 32
+                    print()
+                }
+                else if (name == 02) {
+                    var x = 4.4125
+                    print()
+                }
+                else if (name == 03) {
+                    var x = 60 / 4
+                    print()
+                }
+                else if (name == 04) {
+                    var x = 9
+                    print()
+                }
+                else if (name == 05) {
+                    var x = 54 / 16
+                    print()
+                }
+                else if (name == 06) {
+                    var x = 12.5
+                    print()
+                }
+                else if (name == 07) {
+                    var x = 3.125
+                    print()
+                }
+                //后续添加
 
+                //
+
+            }
         }
     </script>
-    <h1 id="00" style=" background-color:white">选择药剂</h1>
-    <h3 id="01" style=" background-color:white" onclick="names(this)">苯醚甲环唑</h3>
-    <h3 id="02" style=" background-color:white" onclick="names(this)">吡唑醚菌酯</h3>
-    <h3 id="03" style=" background-color:white" onclick="names(this)">嘧菌酯</h3>
-    <h3 id="04" style=" background-color:white" onclick="names(this)">粉唑醇</h3>
-    <h3 id="05" style=" background-color:white" onclick="names(this)">胺菌酯</h3>
-    <h3 id="06" style=" background-color:white" onclick="names(this)">啶酰菌胺</h3>
-    <h3 id="07" style=" background-color:white" onclick="names(this)">戊唑醇</h3>
+    <div id="00" style=" background-color:white">选择药剂</div>
+    <div id="left">
+        <h3 id="01" style=" background-color:white" onclick="names(this)">苯醚甲环唑</h3>
+        <h3 id="02" style=" background-color:white" onclick="names(this)">吡唑醚菌酯</h3>
+        <h3 id="03" style=" background-color:white" onclick="names(this)">嘧菌酯</h3>
+        <h3 id="04" style=" background-color:white" onclick="names(this)">粉唑醇</h3>
+        <h3 id="05" style=" background-color:white" onclick="names(this)">胺菌酯</h3>
+        <h3 id="06" style=" background-color:white" onclick="names(this)">啶酰菌胺</h3>
+        <h3 id="07" style=" background-color:white" onclick="names(this)">戊唑醇</h3>
+    </div>
     <div class="right">
         <form id="01">
             浓度倍数: <input type="text" id="beishu" placeholder="在此输入浓度倍数"><br>
