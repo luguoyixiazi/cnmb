@@ -16,6 +16,7 @@
         var fist = ''
         var namelist = ' '
         var name = ''
+        var x = 0
         function names(obj) { //js获取 
             name = obj.id
             namelist = obj.innerText
@@ -80,22 +81,68 @@
 
             }
         }
+
+        function fu() {
+            var hun = document.getElementById("hun")
+            var yuan = document.getElementById('yuan')
+
+            if ((x % 2) == 0) {
+                hun.style.display = "block";
+                yuan.style.display = "none";
+                x += 1;
+            }
+            else {
+                hun.style.display = "none";
+                yuan.style.display = "block";
+                x += 1
+            }
+
+        }
     </script>
-    <div id="00" style=" background-color:white">选择药剂</div>
-    <div id="left">
-        <h3 id="01" style=" background-color:white" onclick="names(this)">苯醚甲环唑</h3>
-        <h3 id="02" style=" background-color:white" onclick="names(this)">吡唑醚菌酯</h3>
-        <h3 id="03" style=" background-color:white" onclick="names(this)">嘧菌酯</h3>
-        <h3 id="04" style=" background-color:white" onclick="names(this)">粉唑醇</h3>
-        <h3 id="05" style=" background-color:white" onclick="names(this)">胺菌酯</h3>
-        <h3 id="06" style=" background-color:white" onclick="names(this)">啶酰菌胺</h3>
-        <h3 id="07" style=" background-color:white" onclick="names(this)">戊唑醇</h3>
+    <div id='yuan' style="display:block;">
+        <div id="00" style=" background-color:white">选择药剂</div>
+        <div id="left">
+            <h3 id="01" style=" background-color:white" onclick="names(this)">苯醚甲环唑</h3>
+            <h3 id="02" style=" background-color:white" onclick="names(this)">吡唑醚菌酯</h3>
+            <h3 id="03" style=" background-color:white" onclick="names(this)">嘧菌酯</h3>
+            <h3 id="04" style=" background-color:white" onclick="names(this)">粉唑醇</h3>
+            <h3 id="05" style=" background-color:white" onclick="names(this)">胺菌酯</h3>
+            <h3 id="06" style=" background-color:white" onclick="names(this)">啶酰菌胺</h3>
+            <h3 id="07" style=" background-color:white" onclick="names(this)">戊唑醇</h3>
+        </div>
+        <div class="right">
+            <form id="01">
+                浓度倍数: <input type="text" id="beishu" placeholder="在此输入浓度倍数"><br>
+                <button onclick="jisuan()">提交</button>
+            </form>
+        </div>
+        <button onmouseup="fu()"> 查看混配数据</<button>
     </div>
-    <div class="right">
-        <form id="01">
-            浓度倍数: <input type="text" id="beishu" placeholder="在此输入浓度倍数"><br>
-            <button onclick="jisuan()">提交</button>
-        </form>
+    <div id="hun" style="display:none">
+        <h1>复配数据：</p>
+            <h2>药剂称量：</h2>
+            <h3>三唑酮 41.7mg/40ml</h3>
+            <h3>吡唑醚菌酯：8.1mg/40ml——>取0.1ml稀释至1ml，反复四次后取0.4ml稀释至40ml</h3>
+            <h3>胺菌酯：8.3mg/40ml——>取0.1ml稀释至1ml，反复五次后取0.4ml稀释至40ml</h3>
+            <h3>戊唑醇：1.0mg/40ml</h3>
+
+            <h1>A:吡唑醚菌酯+三唑酮</h1>
+            <p>A1=1:9</p>
+            <p>A9=9:1</p>
+
+            <h1>B:吡唑醚菌酯+戊唑醇</h1>
+            <p>B1=1:9</p>
+            <p>B9=9:1</p>
+
+            <h1>C：胺菌酯+三唑酮</h1>
+            <p>C1=1:9</p>
+            <p>C9=9:1</p>
+
+            <h1>D：胺菌酯+戊唑醇</h1>
+            <p>D1=1:9</p>
+            <p>D9=9:1</p>
+
+            <button onclick="fu()">查看筛选数据</<button>
     </div>
 </body>
 
